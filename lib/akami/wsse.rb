@@ -113,7 +113,7 @@ module Akami
       if digest?
         security_hash :wsse, "UsernameToken",
           "wsse:Username" => username,
-          "wsse:Nonce" => nonce,
+          "wsse:Nonce" => Base64.encode64(nonce),
           "wsu:Created" => timestamp,
           "wsse:Password" => digest_password,
           :attributes! => { "wsse:Password" => { "Type" => PASSWORD_DIGEST_URI } }
